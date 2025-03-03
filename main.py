@@ -33,12 +33,12 @@ twitter_client = tweepy.Client(
 )
 
 def get_latest_tweets(username: str, count: int = 5):
-    """Fetch the latest tweets from a user."""
+    """OULALAAL JE FETCH LES TWEETS"""
     try:
         # Get l'user id
         user = twitter_client.get_user(username=username, user_fields=["id"])
         if user.data is None:
-            print(f"User {username} not found.")
+            print(f"User {username} c qui ce trdballe.")
             return []
 
         user_id = user.data.id
@@ -47,11 +47,11 @@ def get_latest_tweets(username: str, count: int = 5):
         tweets = twitter_client.get_users_tweets(id=user_id, max_results=count, tweet_fields=["id"])
         return [f"https://twitter.com/{username}/status/{tweet.id}" for tweet in tweets.data] if tweets.data else []
     except tweepy.errors.TweepyException as e:
-        print(f"Error fetching tweets for {username}: {e}")
+        print(f"Force a wat ya une erreur je sais pas c quoi {username}: {e}")
         return []
 
 def get_new_tweets(username):
-    """Check for new tweets from a user."""
+    """OULALA JE PREND LES NOUVEAUX TWEETS"""
     global cached_tweets
     latest_tweets = get_latest_tweets(username)
 
@@ -63,13 +63,13 @@ def get_new_tweets(username):
 
 @bot.event
 async def on_ready():
-    """Called when the bot is ready."""
-    print(f"Logged in as {bot.user}")
+    """Salut"""
+    print(f"je suis co en tant que {bot.user}")
 
     # fetch le channel discord
     channel = bot.get_channel(DISCORD_CHANNEL_ID)
     if channel is None:
-        print(f"Channel with ID {DISCORD_CHANNEL_ID} not found.")
+        print(f"mais kestume chie le channel {DISCORD_CHANNEL_ID} il existe pas.")
         return
 
     for user in TWITTER_USERS:
@@ -83,7 +83,7 @@ async def on_ready():
 
             # Send new tweets to Discord
             if new_tweets:
-                await channel.send(f"New tweet(s) from {user}:")
+                await channel.send(f"Guettez ca les kho {user}:")
                 for link in new_tweets:
                     await channel.send(link)
 
