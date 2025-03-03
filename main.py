@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Load le fichier env
 load_dotenv()
 
-# Tu touche pas
+# Tu touche pas sauf a la channel id 
 BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
 API_KEY = os.getenv("TWITTER_API_KEY")
 API_SECRET = os.getenv("TWITTER_API_SECRET")
